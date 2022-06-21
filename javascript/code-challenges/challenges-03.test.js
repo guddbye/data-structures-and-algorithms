@@ -5,12 +5,10 @@ CHALLENGE 1 - Review
 Write a function called addTwo that takes in an array and adds two to every value using a for loop. Place the new value in a new array. Return the new array.
 ------------------------------------------------------------------------------------------------ */
 
-
-addTwo([1,2,3]);
 const addTwo = (arr) => {
   let newArr = [];
-  for(let i = 0; i < arr.length; i++) {
-    newArr.push(arr[i] + 2);
+  for (let i = 0; i < arr.length; i = i + 1) {
+    newArr[i] = arr[i] + 2;
   }
   return newArr;
 };
@@ -22,11 +20,8 @@ For example, typeNum([1, 'bob' ,3]) returns [1,3].
 ------------------------------------------------------------------------------------------------ */
 
 const typeNum = (arr) => {
-  let newArr = arr.filter(num => +num)
-  return newArr;
+  return arr.filter((n) => typeof n === 'number');
 };
-
-typeNum([1, 2, 3]);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -34,15 +29,9 @@ Write a function named containsAnd that, given an array of strings as input, use
 For example, containsAnd(['panda', 'ran', 'and']) returns ['panda', 'and'].
 ------------------------------------------------------------------------------------------------ */
 
-
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
-
 const containsAnd = (arr) => {
-  let newArr = arr.filter(word => word.indexOf('and'.toLocaleLowerCase()) !== -1);
-  return newArr;
+  return arr.filter(stringy => stringy.includes('and'));
 };
-
-containsAnd(['panda', 'ran', 'and']);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -51,11 +40,8 @@ For example, oddValues([1,2,3]) returns [1,3].
 ------------------------------------------------------------------------------------------------ */
 
 const oddValues = (arr) => {
-  let newArr = arr.filter(num => num % 2);
-  return newArr;
+  return arr.filter(num => (num % 2) !== 0);
 };
-
-oddValues([1,2,3]);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -64,11 +50,9 @@ For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 ------------------------------------------------------------------------------------------------ */
 
 const notInFirstArray = (forbiddenValues, arr) => {
-  let newArr = arr.filter(num => forbiddenValues.indexOf(num) > -1 ? false : true);
-  return newArr;
+  return arr.filter(num=> forbiddenValues.includes(num)===false);
 };
 
-notInFirstArray([1,2,3], [1,2,3,4]);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6 - Stretch Goal
