@@ -92,8 +92,10 @@ Write a function named containsWorld that takes in a string or number of any len
 ------------------------------------------------------------------------------------------------ */
 
 const containsWorld = (input) => {
-  // Solution code here...
-};
+  let reg = /\b(world/;
+  return reg.test(input);
+
+      };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -104,7 +106,8 @@ Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
 const isCapitalized = (str) => {
-  // Solution code here...
+  let reg = //b
+      str.match(reg);
 };
 
 /* ------------------------------------------------------------------------------------------------
