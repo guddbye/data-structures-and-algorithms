@@ -87,8 +87,8 @@ Write a function named containsWorld that takes in a string or number of any len
 ------------------------------------------------------------------------------------------------ */
 
 const containsWorld = (input) => {
-  let regex=/(world)/;
-  return regex.test(input);
+  let regex = /world/;
+  return (regex.test(input));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -108,7 +108,10 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 ------------------------------------------------------------------------------------------------ */
 
 const citiesAtoJ = (arr) => {
-  // Solution code here...
+  let reg=/^[A-Ja-j]\w*/g;
+  let matches=arr.forEach(a => a.match(reg) || []);
+  console.log(matches);
+  return matches;
 };
 
 /* ------------------------------------------------------------------------------------------------
