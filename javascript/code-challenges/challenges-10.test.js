@@ -46,7 +46,15 @@ For example:
 return: 35
 ------------------------------------------------------------------------------------------------ */
 const totalSum = (matrix) => {
-  // Solution code here...
+  let totalSum = 0;
+
+  matrix.forEach(nestedArr => { // Slower loop
+    nestedArr.forEach(number => { // Faster loop
+      totalSum += number;
+    });
+  });
+
+  return totalSum;
 };
 
 
@@ -73,8 +81,16 @@ const alkiBeach = [33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17];
 const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
-  // Solution code here...
+  let hourlyTotals = [];
 
+  for (let i = 0; i < stores[0].length; i++) {
+    let hourlySum = 0;
+    for (let j = 0; j < stores.length; j++) {
+      hourlySum += stores[j][i];
+    }
+    hourlyTotals.push(hourlySum);
+  }
+  return hourlyTotals;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -113,8 +129,19 @@ const errands = [
 ];
 
 const howManyTreats = (arr) => {
-  // Solution code here...
+  // return arr[2].items[1].quantity;
+  let treats = 0;
+  arr.forEach(obj => {
+    let listArr = obj.items;
+    listArr.forEach(item => {
+      if(item.name === 'Treats') {
+        treats = item.quantity;
+      }
+    });
+  });
+  return treats;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
