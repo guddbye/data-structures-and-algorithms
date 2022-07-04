@@ -73,6 +73,7 @@ const onlyOddChars = (str) => {
   for(let i=1;i<str.length;i+=2){
     oddStr+=str[i];
   }
+
   return oddStr;
 };
 
