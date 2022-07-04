@@ -7,7 +7,17 @@ Write a function named longestString that takes in an array of strings and retur
 ------------------------------------------------------------------------------------------------ */
 
 const longestString = (arr) => {
-// Solution code here...
+  if (arr.length===0) return -1;
+
+  let indexOfLongest=0;
+  let prevLongest=0;
+  arr.forEach((string,idx)=> {
+    if(string.length>prevLongest){
+      prevLongest=string.length;
+      indexOfLongest=idx;
+    }
+  });
+  return indexOfLongest;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -22,6 +32,7 @@ const firstLetters = (arr) => {
   return arr.map(string=> string.charAt(0));
 };
 
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
 
@@ -31,7 +42,7 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['this
 ------------------------------------------------------------------------------------------------ */
 
 const findHappiness = (arr) => {
-  return arr.filter(string => string.includes(':)'));
+  return arr.filter(string=>string.includes(':)'));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -43,7 +54,10 @@ For example, (123) 456-7890 returns 1234567890
 ------------------------------------------------------------------------------------------------ */
 
 const standardizePhoneNumbers = (arr) => {
-  // Solution code here...
+  return arr.map(string=> {
+    let regex=/\d/g;
+    return string.match(regex).join('');
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -56,9 +70,10 @@ For example, 'abcdefg' returns 'bdf'
 
 const onlyOddChars = (str) => {
   let oddStr='';
-  for(let i = 1; i < str.length; i += 2){
-    oddStr += str[i];
+  for(let i=1;i<str.length;i+=2){
+    oddStr+=str[i];
   }
+
   return oddStr;
 };
 
@@ -69,7 +84,8 @@ Write a function named allHappy that takes in an array of strings and returns a 
 ------------------------------------------------------------------------------------------------ */
 
 const allHappy = (arr) => {
-  // Solution code here...
+  let happyArr=arr.filter(string=>string.includes(':)'));
+  return happyArr.length===arr.length?true:false;
 };
 
 /* ------------------------------------------------------------------------------------------------
