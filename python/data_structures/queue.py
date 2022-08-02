@@ -1,44 +1,39 @@
 from data_structures.invalid_operation_error import InvalidOperationError
 
-
 class Queue:
     """
-    A Linked List as the underlying data storage mechanism, implement both a Stack and a Queue
+    Data structure that stores values in linked nodes.
+    Uses Last In Last Out (LILO) to access the nodes in the queue.
     """
 
     def __init__(self):
-        self.top = None
-        self.tail = None
-        self.size = 0
+        self.front = None
+        self.rear = None
 
-    def __len__(self):
-        return self.size
+    def enqueue(self, val):
+        new_node = Node(val)
+        if self.front is None:
+            self.front = new_node
+            self.rear = new_node
+        self.rear.next = new_node
+        self.rear = new_node
 
-    def is_empty(self):
-        if self.size == 0:
-            return True
-        else:
-            return False
-
-    def push(self, element):
-        self.top = Node(element, self.top)
-        self.size += 1
-
-    def pop(self):
-        if self.is_empty():
-            raise InvalidOperationError("Method not allowed on empty collection.")
-        result = self.top.value
-        self.top = self.top.next
-        self.size -= 1
-        return result
+    def dequeue(self):
+        if self.front is None:
+            raise InvalidOperationError("Method not allowed on empty collection")
+        old_front = self.front
+        self.front = old_front.next
+        return old_front.value
 
     def peek(self):
-        # method body here
-        if self.is_empty():
-            raise InvalidOperationError("Method now allowed on empty collection.")
-        return self.top.value
+        if self.front is None:
+            raise InvalidOperationError("Method not allowed on empty collection")
+        return self.front.value
+
+    def is_empty(self):
+        return self.front is None
 
 class Node:
-    def __init__(self, element, next_):
-        self.value = element
+    def __init__(self, val, next_=None):
+        self.value = val
         self.next = next_
