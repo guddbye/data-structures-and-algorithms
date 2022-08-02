@@ -21,14 +21,12 @@ Can properly return a collection of all the values that exist in the linked list
     def __init__(self):
         # initialization here
         self.head = None
-        pass
 
     def insert(self, value):
         # method body here
         new_node = Node(value)
         new_node.next = self.head
         self.head = new_node
-        pass
 
     def includes(self, value):
         # method body here
@@ -38,7 +36,6 @@ Can properly return a collection of all the values that exist in the linked list
                 return True
             current = current.next
         return False
-        pass
 
     def __str__(self):
         # method body here
@@ -48,7 +45,7 @@ Can properly return a collection of all the values that exist in the linked list
             string += str(current.value) + " -> "
             current = current.next
         return string[:-4]
-        pass
+
 
 
 class TargetError:
