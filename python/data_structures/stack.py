@@ -1,43 +1,35 @@
 from data_structures.invalid_operation_error import InvalidOperationError
 
+class Stack:
+    """
+    Data structure that stores values in linked nodes.
+    Uses Last In First Out (LIFO) to access the nodes in the stack.
+    """
 
-class Queue:
     def __init__(self):
-        self.front = None
-        self.tail = None
-        self.size = 0
+        self.top = None
 
-    def __len__(self):
-        return self.size
+    def push(self, val):
+        new_node = Node(val)
+        new_node.next = self.top
+        self.top = new_node
 
-    def is_empty(self):
-        return self.size == 0
-
-    def enqueue(self, element):
-        new = Node(element, None)
-        if self.is_empty():
-            self.front = new
-        else:
-            self.tail.next = new
-        self.tail = new
-        self.size += 1
-
-    def dequeue(self):
-        if self.is_empty():
-            raise InvalidOperationError("An empty queue!")
-        result = self.front.value
-        self.front = self.front.next
-        self.size -= 1
-        if self.is_empty():
-            self.tail = None
-        return result
+    def pop(self):
+        if self.top is None:
+            raise InvalidOperationError("Method not allowed on empty collection")
+        old_top = self.top
+        self.top = old_top.next
+        return old_top.value
 
     def peek(self):
-        if self.is_empty():
-            raise InvalidOperationError("An empty queue!")
-        return self.front.value
+        if self.top is None:
+            raise InvalidOperationError("Method not allowed on empty collection")
+        return self.top.value
+
+    def is_empty(self):
+        return self.top is None
 
 class Node:
-    def __init__(self, element, next_=None):
-        self.value = element
+    def __init__(self, val, next_=None):
+        self.value = val
         self.next = next_
