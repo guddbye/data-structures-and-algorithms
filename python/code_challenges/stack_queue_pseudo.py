@@ -12,18 +12,14 @@ class PseudoQueue:
         self.stack_2 = Stack()
 
     def enqueue(self, value):
+        while self.stack_2.top:
+            self.stack_1.push(self.stack_2.pop())
         self.stack_1.push(value)
 
     def dequeue(self):
-        if self.stack_2.is_empty():
-            while not self.stack_1.is_empty():
-                self.stack_2.push(self.stack_1.pop())
+        while self.stack_1.top:
+            self.stack_2.push(self.stack_1.pop())
         return self.stack_2.pop()
 
-    def is_empty(self):
-        return self.stack_1.is_empty() and self.stack_2.is_empty()
-
-    def __str__(self):
-        return f"PseudoQueue: {self.stack_1} {self.stack_2}"
-
-
+    # def is_empty(self):
+    #     return self.stack_1.is_empty() and self.stack_2.is_empty()

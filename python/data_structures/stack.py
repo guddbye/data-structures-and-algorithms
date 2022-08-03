@@ -6,29 +6,39 @@ class Stack:
     Uses Last In First Out (LIFO) to access the nodes in the stack.
     """
 
+class Stack:
+    """
+    Data structure that stores values in linked nodes.
+    Uses Last In First Out (LIFO) to access the nodes in the stack.
+    """
+
     def __init__(self):
         self.top = None
+        self.tail = None
+        self.size = 0
 
-    def push(self, val):
-        new_node = Node(val)
-        new_node.next = self.top
-        self.top = new_node
+    def push(self, value):
+        new_node = Node(value)
 
-    def pop(self):
-        if self.top is None:
-            raise InvalidOperationError("Method not allowed on empty collection")
-        old_top = self.top
-        self.top = old_top.next
-        return old_top.value
+
+        if self.is_empty():
+            raise InvalidOperationError("Method not allowed on empty collection.")
+        result = self.top.value
+        self.top = self.top.next
+        self.size -= 1
+        return result
 
     def peek(self):
-        if self.top is None:
-            raise InvalidOperationError("Method not allowed on empty collection")
+        if self.is_empty():
+            raise InvalidOperationError("Method now allowed on empty collection.")
         return self.top.value
 
-    def is_empty(self):
-        return self.top is None
 
+    def is_empty(self):
+        if self.size == 0:
+            return True
+        else:
+            return False
 class Node:
     def __init__(self, val, next_=None):
         self.value = val
