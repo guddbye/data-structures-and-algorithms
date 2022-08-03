@@ -38,14 +38,56 @@ Can properly return a collection of all the values that exist in the linked list
         return False
 
     def __str__(self):
-        # method body here
+        text = ""
         current = self.head
-        string = ""
-        while current:
-            string += str(current.value) + " -> "
+        while current is not None:
+            text += "{ " + str(current.value) + " } -> "
             current = current.next
-        return string[:-4]
+        return text + "NULL"
 
+    def append(self, value):
+        if self.head is None:
+            self.head = Node(value)
+        else:
+            current = self.head
+            while current.next is not None:
+                current = current.next
+            current.next = Node(value)
+
+
+def insert_before(self, idx, new):
+        if self.head is None:
+            raise TargetError
+
+        current = self.head
+        if current.value == idx:
+            new_node = Node(new)
+            new_node.next = self.head
+            self.head = new_node
+            return f"Successfully created {new}!"
+
+        while current and current.next is not None:
+            if current.next.value == idx:
+                new_node = Node(new)
+                new_node.next = current.next
+                current.next = new_node
+                return f"Successfully created {new}!"
+            current = current.next
+        raise TargetError
+
+def insert_after(self, idx, new):
+        if self.head is None:
+            raise TargetError
+
+        current = self.head
+        while current is not None:
+            if current.value == idx:
+                new_node = Node(new)
+                new_node.next = current.next
+                current.next = new_node
+                return f"Successfully created {new}!"
+            current = current.next
+        raise TargetError
 
 
 class TargetError:
