@@ -1,14 +1,15 @@
 from data_structures.invalid_operation_error import InvalidOperationError
 
-
 class Queue:
     """
     Data structure that stores values in linked nodes.
+
     Uses Last In First Out (LIFO) to access the nodes in the stack.
-    """
+
 
     def __init__(self):
         self.front = None
+
         self.tail = None
         self.size = 0
 
@@ -42,4 +43,4 @@ class Queue:
 class Node:
     def __init__(self, element, next_=None):
         self.value = element
-        self.next = next_
+        self.rear = None
