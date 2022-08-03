@@ -16,3 +16,6 @@ Return the new single linked list.
 
 ## Solution
 Solution in whiteboard.
+
+[Code]
+(https://github.com/guddbye/data-structures-and-algorithms/blob/73a7f08e953fca96f0d4312607a138774f394b43/python/code_challenges/linked_list_zip.py)
