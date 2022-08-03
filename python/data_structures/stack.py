@@ -1,5 +1,10 @@
 from data_structures.invalid_operation_error import InvalidOperationError
 
+class Stack:
+    """
+    Data structure that stores values in linked nodes.
+    Uses Last In First Out (LIFO) to access the nodes in the stack.
+    """
 
 class Stack:
     """
@@ -14,10 +19,8 @@ class Stack:
 
     def push(self, value):
         new_node = Node(value)
-        new_node.next = self.top
-        self.top = new_node
 
-    def pop(self):
+
         if self.is_empty():
             raise InvalidOperationError("Method not allowed on empty collection.")
         result = self.top.value
@@ -30,12 +33,13 @@ class Stack:
             raise InvalidOperationError("Method now allowed on empty collection.")
         return self.top.value
 
+
     def is_empty(self):
         if self.size == 0:
             return True
         else:
             return False
 class Node:
-    def __init__(self, element, next_=None):
-        self.value = element
+    def __init__(self, val, next_=None):
+        self.value = val
         self.next = next_
