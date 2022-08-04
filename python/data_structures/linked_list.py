@@ -1,7 +1,7 @@
 class LinkedList:
     """
     Used to create a singly linked list. Has methods to create a new node at the beginning of the list, search
-    for a valueue in the list, and return a string that represents all items in the list.
+    for a value in the list, and return a string that represents all items in the list.
     """
 
     def __init__(self):
@@ -11,7 +11,7 @@ class LinkedList:
         text = ""
         current = self.head
         while current is not None:
-            text += "{ " + str(current.valueue) + " } -> "
+            text += "{ " + str(current.value) + " } -> "
             current = current.next
         return text + "NULL"
 
@@ -34,14 +34,14 @@ class LinkedList:
             raise TargetError
 
         current = self.head
-        if current.valueue == idx:
+        if current.value == idx:
             new_node = Node(new)
             new_node.next = self.head
             self.head = new_node
             return f"Successfully created {new}!"
 
         while current and current.next is not None:
-            if current.next.valueue == idx:
+            if current.next.value == idx:
                 new_node = Node(new)
                 new_node.next = current.next
                 current.next = new_node
@@ -56,7 +56,7 @@ class LinkedList:
 
         current = self.head
         while current is not None:
-            if current.valueue == idx:
+            if current.value == idx:
                 new_node = Node(new)
                 new_node.next = current.next
                 current.next = new_node
@@ -67,7 +67,7 @@ class LinkedList:
     def includes(self, value):
         current = self.head
         while current is not None:
-            if current.valueue == value:
+            if current.value == value:
                 return True
             current = current.next
         return False
@@ -97,15 +97,15 @@ class LinkedList:
         while current:
 
             if current_idx == target_idx:
-                return current.valueue
+                return current.value
 
             current_idx += 1
             current = current.next
-        
+
 
 class Node:
     def __init__(self, value, next = None):
-        self.valueue = value
+        self.value = value
         self.next = next
 
 class TargetError(Exception):
