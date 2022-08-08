@@ -23,3 +23,20 @@ class PseudoQueue:
 
     # def is_empty(self):
     #     return self.stack_1.is_empty() and self.stack_2.is_empty()
+
+
+class DuckDuckGoose():
+    """ Write a function called DuckDuckGoose() that accepts some strings and an int K. Use a enqueue and dequeue.
+    """
+
+    def __init__(self, strings, k):
+        self.strings = strings
+        self.k = k
+        self.queue = PseudoQueue()
+        for string in strings:
+            self.queue.enqueue(string)
+
+    def play(self):
+        for _ in range(self.k):
+            self.queue.dequeue()
+        return self.queue.dequeue()
