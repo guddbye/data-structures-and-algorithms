@@ -1,6 +1,6 @@
 class BinaryTree:
     """
-    Construct a string consists of parenthesis and integers from a binary tree with the preorder traversing way. 
+    Construct a string consists of parenthesis and integers from a binary tree with the preorder traversing way.
     """
 
     def __init__(self):
@@ -44,6 +44,23 @@ class BinaryTree:
 
         walk(self.root)
         return values
+
+    def find_maximum_value(self):
+        if self.root is None:
+            return None
+
+        maximum = self.root.value
+
+        def walk(root):
+            if root is None:
+                return
+            if root.value > maximum:
+                maximum = root.value
+            walk(root.left)
+            walk(root.right)
+
+        walk(self.root)
+        return maximum
 
 class Node:
     def __init__(self, value):
