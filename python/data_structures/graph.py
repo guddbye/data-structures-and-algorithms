@@ -1,6 +1,6 @@
 class Graph:
     def __init__(self):
-        # initialization here
+
         self._adjacency_list = {}
 
     def add_node(self, value):
