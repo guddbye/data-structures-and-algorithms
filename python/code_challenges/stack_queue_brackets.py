@@ -1,10 +1,11 @@
 from data_structures.stack import Stack
 
-
 def multi_bracket_validation(string):
+
     """
     Given a string of brackets, return True if the brackets are balanced and False otherwise.
     """
+
     open_stack = Stack()
     openers = ["{","[","("]
     closers = ["}","]",")"]
@@ -14,19 +15,18 @@ def multi_bracket_validation(string):
         ')': '('
     }
 
-    for char in string:
+    chars = list(string)
+    for char in chars:
         if char in openers:
             open_stack.push(char)
 
-        elif char in closers:
-
+        if char in closers:
             if open_stack.is_empty():
-
                 return False
 
+            if pairs.get(char) == open_stack.peek():
+                open_stack.pop()
             else:
-                if pairs[char] != open_stack.pop():
-                    return False
+                return False
 
     return True
-
