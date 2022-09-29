@@ -1,69 +1,93 @@
+from data_structures.queue import Queue
+
 class BinaryTree:
     """
-    Construct a string consists of parenthesis and integers from a binary tree with the preorder traversing way.
+    Put docstring here
     """
 
     def __init__(self):
         self.root = None
+        self.max = None
 
     def pre_order(self):
-        values = []
-
-        def walk(root):
-            if root is None:
+        def walk(root, data):
+            if not root:
                 return
-            values.append(root.value)
-            walk(root.left)
-            walk(root.right)
 
-        walk(self.root)
-        return values
+            data.append(root.value)
+            walk(root.left, data)
+            walk(root.right, data)
+
+        data_values = []
+        walk(self.root, data_values)
+        return data_values
+
 
     def in_order(self):
-        values = []
-
-        def walk(root):
-            if root is None:
+        def walk(root, data):
+            if not root:
                 return
-            walk(root.left)
-            values.append(root.value)
-            walk(root.right)
 
-        walk(self.root)
-        return values
+            walk(root.left, data)
+            data.append(root.value)
+            walk(root.right, data)
+
+        data_values = []
+        walk(self.root, data_values)
+        return data_values
 
     def post_order(self):
-        values = []
-
-        def walk(root):
-            if root is None:
+        def walk(root, data):
+            if not root:
                 return
+
+            walk(root.left, data)
+            walk(root.right, data)
+            data.append(root.value)
+
+        data_values = []
+        walk(self.root, data_values)
+        return data_values
+
+    def find_max(self):
+        def walk(root):
+            if not root:
+                return
+            if self.max is None:
+                self.max = root.value
+            if root.value > self.max:
+                self.max = root.value
             walk(root.left)
             walk(root.right)
-            values.append(root.value)
-
         walk(self.root)
-        return values
+        return self.max
 
-    def find_maximum_value(self):
-        if self.root is None:
-            return None
+    def add(self, data):
 
-        maximum = self.root.value
+        node = Node(data)
 
-        def walk(root):
-            if root is None:
+        if not self.root:
+            self.root = node
+            return
+
+        breadth = Queue()
+
+        breadth.enqueue(self.root)
+
+        while not breadth.is_empty():
+            front = breadth.dequeue()
+            if not front.left:
+                front.left = node
                 return
-            if root.value > maximum:
-                maximum = root.value
-            walk(root.left)
-            walk(root.right)
-
-        walk(self.root)
-        return maximum
-
+            else:
+                breadth.enqueue(front.left)
+            if not front.right:
+                front.right = node
+                return
+            else:
+                breadth.enqueue(front.right)
 class Node:
-    def __init__(self, value):
-        self.right = None
-        self.left = None
+    def __init__(self, value, left = None, right = None):
         self.value = value
+        self.left = left
+        self.right = right
