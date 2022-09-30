@@ -1,6 +1,6 @@
 ## Singly Linked List
 
-Allows for the creation of singly linked lists. New nodes can be created and added to the list. You can search the list for a value and get a True or False response if the value is in the list. The __str__ function returns a string containing all the values in the list.
+Allows for the creation of singly linked lists. New nodes can be created and added to the list. You can search the list for a value and get a True or False response if the value is in the list.
 
 ## Challenge
 
