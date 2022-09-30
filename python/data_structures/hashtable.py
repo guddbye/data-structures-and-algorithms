@@ -45,6 +45,7 @@ class Hashtable:
             if key_value_pair[0] == key:
                 return key_value_pair[1]
             current = current.next
+
         return None
 
     def contains(self, key):
@@ -59,6 +60,7 @@ class Hashtable:
             if key_value_pair[0] == key:
                 return True
             current = current.next
+
         return False
 
     def keys(self):
@@ -70,6 +72,7 @@ class Hashtable:
                     key_value_pair = current.value
                     gathered_keys.append(key_value_pair[0])
                     current = current.next
+
         return gathered_keys
 
     def hash(self, key):

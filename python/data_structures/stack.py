@@ -1,10 +1,5 @@
 from data_structures.invalid_operation_error import InvalidOperationError
 
-class Stack:
-    """
-    Data structure that stores values in linked nodes.
-    Uses Last In First Out (LIFO) to access the nodes in the stack.
-    """
 
 class Stack:
     """

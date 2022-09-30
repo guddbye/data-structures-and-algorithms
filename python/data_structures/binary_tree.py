@@ -1,93 +1,89 @@
-from data_structures.queue import Queue
+from data_structures.invalid_operation_error import InvalidOperationError
 
 class BinaryTree:
     """
-    Put docstring here
+    Data structure that stores values in nodes.
+    Nodes are linked together to form a tree.
+    Each node has a left and right link.
     """
 
     def __init__(self):
         self.root = None
-        self.max = None
 
     def pre_order(self):
-        def walk(root, data):
-            if not root:
-                return
+        if self.is_empty():
+            raise InvalidOperationError("Method not allowed on empty collection")
 
-            data.append(root.value)
-            walk(root.left, data)
-            walk(root.right, data)
+        values = []
 
-        data_values = []
-        walk(self.root, data_values)
-        return data_values
-
-
-    def in_order(self):
-        def walk(root, data):
-            if not root:
-                return
-
-            walk(root.left, data)
-            data.append(root.value)
-            walk(root.right, data)
-
-        data_values = []
-        walk(self.root, data_values)
-        return data_values
-
-    def post_order(self):
-        def walk(root, data):
-            if not root:
-                return
-
-            walk(root.left, data)
-            walk(root.right, data)
-            data.append(root.value)
-
-        data_values = []
-        walk(self.root, data_values)
-        return data_values
-
-    def find_max(self):
         def walk(root):
-            if not root:
+            if root is None:
                 return
-            if self.max is None:
-                self.max = root.value
-            if root.value > self.max:
-                self.max = root.value
+            values.append(root.value)
             walk(root.left)
             walk(root.right)
+
         walk(self.root)
-        return self.max
+        return values
 
-    def add(self, data):
+    def in_order(self):
+        if self.is_empty():
+            raise InvalidOperationError("Method not allowed on empty collection")
 
-        node = Node(data)
+        values = []
 
-        if not self.root:
-            self.root = node
-            return
-
-        breadth = Queue()
-
-        breadth.enqueue(self.root)
-
-        while not breadth.is_empty():
-            front = breadth.dequeue()
-            if not front.left:
-                front.left = node
+        def walk(root):
+            if root is None:
                 return
-            else:
-                breadth.enqueue(front.left)
-            if not front.right:
-                front.right = node
+            walk(root.left)
+            values.append(root.value)
+            walk(root.right)
+
+        walk(self.root)
+        return values
+
+    def post_order(self):
+        if self.is_empty():
+            raise InvalidOperationError("Method not allowed on empty collection")
+
+        values = []
+
+        def walk(root):
+            if root is None:
                 return
-            else:
-                breadth.enqueue(front.right)
+            walk(root.left)
+            walk(root.right)
+            values.append(root.value)
+
+        walk(self.root)
+        return values
+
+    def find_maximum_value(self):
+        if self.is_empty():
+            raise InvalidOperationError("Method not allowed on empty collection")
+
+        max_value = None
+
+        def walk(root):
+            nonlocal max_value
+
+            if root is None:
+                return
+            if max_value is None:
+                max_value = root.value
+            if root.value > max_value:
+                max_value = root.value
+            walk(root.left)
+            walk(root.right)
+
+        walk(self.root)
+        return max_value
+
+    def is_empty(self):
+        return self.root is None
+
 class Node:
-    def __init__(self, value, left = None, right = None):
-        self.value = value
-        self.left = left
-        self.right = right
+    def __init__(self, val):
+        self.right = None
+        self.left = None
+        self.value = val
