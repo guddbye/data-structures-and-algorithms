@@ -5,7 +5,7 @@ class Queue:
     Data structure that stores values in linked nodes.
 
     Uses Last In First Out (LIFO) to access the nodes in the stack.
-
+    """
 
     def __init__(self):
         self.front = None
