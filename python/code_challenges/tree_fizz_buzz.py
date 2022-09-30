@@ -17,20 +17,17 @@ def fizz_buzz_tree(tree):
         else:
             return str(num)
 
-    if tree.root is None:
-        return None
-    
     clone = tree.clone()
-    breadth = Queue()
-    breadth.enqueue(tree.root)
+    breadth_first = Queue()
+    breadth_first.enqueue(clone.root)
 
-
-
-    while not breadth.is_empty():
-        front = breadth.dequeue()
+    while not breadth_first.is_empty():
+        front = breadth_first.dequeue()
+        # print(front.value)
         front.value = fizz_buzz(front.value)
+        # print(front.value)
         print(front.children)
         for child in front.children:
-            breadth.enqueue(child)
+            breadth_first.enqueue(child)
 
-    return clone
+    return
