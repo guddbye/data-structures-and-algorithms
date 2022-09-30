@@ -7,7 +7,4 @@ First-in, First out Animal Shelter.
 ## Approach & Efficiency
 Creating perspective classes.
 Defining enqueue and dequeue functions.
-Creating the correct functionality for the functions as required by the instructions. 
-
-## Solution
-<!-- Show how to run your code, and examples of it in action -->
+Creating the correct functionality for the functions as required by the instructions.
