@@ -2,33 +2,21 @@ from data_structures.linked_list import LinkedList
 Linked = LinkedList
 
 def zip_lists(a, b):
-    idx_count = 0
-    if Linked.get_length(a) > Linked.get_length(b):
-        length = Linked.get_length(a)
-    else:
-        length = Linked.get_length(b)
 
-    while idx_count < length:
-        zipped_list = LinkedList()
-        list1 = a.head
-        list2 = b.head
+    current_a = a.head
+    current_b = b.head
 
-        turn = 1
-        if list1 is None:
-            turn = 2
-        if list2 is None:
-            turn = 1
+    while current_b and current_a:
+        a.insert_after(current_a.value, current_b.value)
+        current_a = current_a.next
+        if current_a.next:
+            current_a = current_a.next
+        current_b = current_b.next
 
-        while list1:
-            if turn == 1:
-                zipped_list.append(list1.value)
-                list1 = list1.next
-                turn = 2
+    if current_a is None or current_b is None:
+        if current_b:
+            return b
+        if current_a:
+            return a
 
-        while list2:
-            if turn == 2:
-                zipped_list.append(list2.value)
-                list2 = list2.next
-                turn = 1
-
-        idx_count += 1
+    return a

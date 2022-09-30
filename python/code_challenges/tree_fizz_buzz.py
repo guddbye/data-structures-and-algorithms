@@ -19,10 +19,11 @@ def fizz_buzz_tree(tree):
 
     if tree.root is None:
         return None
-
+    
+    clone = tree.clone()
     breadth = Queue()
     breadth.enqueue(tree.root)
-    clone = tree.clone()
+
 
 
     while not breadth.is_empty():
