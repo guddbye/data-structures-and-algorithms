@@ -8,6 +8,7 @@ Return: A collection of nodes in their pre-order depth-first traversal order
 Program output: Display the collection
 
 ## Solution
+Run Pytest or Pytest Watch to gain solution.
 
 
 ## Requirements
