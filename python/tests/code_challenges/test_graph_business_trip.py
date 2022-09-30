@@ -21,7 +21,9 @@ def test_arendelle_monstropolis_naboo(planets):
     assert direct_flights(planets, names) == (True, 115)
 
 
+
 #@pytest.mark.skip("TODO")
+
 def test_naboo_pandora(planets):
     names = ["Naboo", "Pandora"]
     assert direct_flights(planets, names) == (False, 0)
