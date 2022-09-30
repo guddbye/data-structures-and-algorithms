@@ -1,6 +1,5 @@
 from data_structures.invalid_operation_error import InvalidOperationError
 
-
 class Stack:
     """
     Data structure that stores values in linked nodes.
@@ -9,31 +8,27 @@ class Stack:
 
     def __init__(self):
         self.top = None
-        self.tail = None
-        self.size = 0
 
-    def push(self, value):
-        new_node = Node(value)
+    def push(self, val):
+        new_node = Node(val)
+        new_node.next = self.top
+        self.top = new_node
 
-
-        if self.is_empty():
-            raise InvalidOperationError("Method not allowed on empty collection.")
-        result = self.top.value
-        self.top = self.top.next
-        self.size -= 1
-        return result
+    def pop(self):
+        if self.top is None:
+            raise InvalidOperationError("Method not allowed on empty collection")
+        old_top = self.top
+        self.top = old_top.next
+        return old_top.value
 
     def peek(self):
-        if self.is_empty():
-            raise InvalidOperationError("Method now allowed on empty collection.")
+        if self.top is None:
+            raise InvalidOperationError("Method not allowed on empty collection")
         return self.top.value
 
-
     def is_empty(self):
-        if self.size == 0:
-            return True
-        else:
-            return False
+        return self.top is None
+
 class Node:
     def __init__(self, val, next_=None):
         self.value = val
