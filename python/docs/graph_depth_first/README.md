@@ -1,5 +1,4 @@
 ## Depth First Traversal
-
 ## challenge 38
 Write the following method for the Graph class:
 
